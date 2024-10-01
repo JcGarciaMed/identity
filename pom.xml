@@ -11,6 +11,7 @@
     <groupId>com.greymatter</groupId>
     <artifactId>identity</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>identity</name>
     <description>identity</description>
     <url/>
@@ -96,6 +97,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <to>
+                        <image>jcgarciamed/${project.artifactId}:s4</image>
+                    </to>
+                </configuration>
             </plugin>
         </plugins>
     </build>
