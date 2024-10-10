@@ -2,7 +2,10 @@ server:
   port: 9030
 spring:
   application:
-    name: student-service
+    name: "identity"
+  profiles:
+    active:
+      - "prod"
   jackson:
     default-property-inclusion: non_null
     property-naming-strategy: SNAKE_CASE
@@ -19,3 +22,11 @@ spring:
   h2:
     console:
       enabled: true
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

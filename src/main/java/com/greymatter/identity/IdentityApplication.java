@@ -2,10 +2,12 @@ package com.greymatter.identity;
 
 import com.greymatter.identity.infrastructure.adapters.output.persistence.entity.PersonEntity;
 import com.greymatter.identity.infrastructure.adapters.output.persistence.repository.PersonRepository;
+import com.greymatter.identity.utils.IdentityContactDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -13,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
+@EnableConfigurationProperties(value = {IdentityContactDto.class})
 @RequiredArgsConstructor
 public class IdentityApplication implements CommandLineRunner {
 
