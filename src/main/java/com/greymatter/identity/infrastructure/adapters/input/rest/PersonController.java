@@ -5,8 +5,6 @@ import com.greymatter.identity.infrastructure.adapters.input.rest.mapper.PersonR
 import com.greymatter.identity.infrastructure.adapters.input.rest.model.PersonResponse;
 import com.greymatter.identity.utils.IdentityContactDto;
 import jakarta.validation.constraints.Pattern;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,8 +33,8 @@ public class PersonController {
 
 
     @GetMapping("/v1/api/{doi}")
-    public PersonResponse findById(@PathVariable @Pattern(regexp="(^$|[0-9]{8})",message = "Mobile number must be 8 digits") String doi) {
-        return mapper.toPersonResponse(personServicePort.findByDoi(doi));
+    public ResponseEntity<PersonResponse> findById(@PathVariable @Pattern(regexp="(^$|[0-9]{8})",message = "Mobile number must be 8 digits") String doi) {
+        return ResponseEntity.status(HttpStatus.OK).body(mapper.toPersonResponse(personServicePort.findByDoi(doi)));
     }
 
     @GetMapping("/contact-info")
